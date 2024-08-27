@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiateAI - Sprzedaż rozwiązań dla firm</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #049f42, #02a641);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 4em;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.3em;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            border-left: 5px solid #008f39;
+            text-align: center;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #008f39;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #008f39;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        .section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            border-left: 5px solid #008f39;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #008f39;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .card button {
+            background-color: #008f39;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .card button:hover {
+            background-color: #006d2a;
+            transform: scale(1.05);
+        }
+
+        .news-section {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .news-section h2 {
+            font-size: 2.5em;
+            color: #008f39;
+            margin-bottom: 20px;
+        }
+
+        .search-bar {
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 80%;
+            padding: 10px;
+            font-size: 1.2em;
+            border: 2px solid #008f39;
+            border-radius: 5px;
+        }
+
+        .search-bar input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 1.2em;
+            background-color: #008f39;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .search-bar input[type="submit"]:hover {
+            background-color: #006d2a;
+        }
+
+        .suggestions {
+            position: absolute;
+            background-color: white;
+            border: 1px solid #008f39;
+            border-radius: 5px;
+            width: 80%;
+            max-height: 200px;
+            margin-left: 60px;
+            overflow-y: auto;
+            z-index: 1000;
+        }
+
+        .suggestions div {
+            padding: 10px;
+            cursor: pointer;
+            border-bottom: 1px solid #f4f4f4;
+        }
+
+        .suggestions div:hover {
+            background-color: #f4f4f4;
+        }
+
+        .article-card {
+            margin-bottom: 30px;
+            background-color: #fff;
+            border-radius: 15px; /* Większe zaokrąglenie rogów */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Zwiększony cień dla efektu unoszenia */
+            padding: 25px; /* Większa przestrzeń wewnętrzna */
+            text-align: left;
+            overflow: hidden;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+        }
+
+        .article-card:hover {
+            transform: translateY(-10px); /* Większy efekt unoszenia */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Mocniejszy cień na hover */
+        }
+
+        .article-card h3 {
+            font-size: 1.9em; /* Nieco większa czcionka */
+            color: #008f39;
+            margin-bottom: 15px;
+            font-weight: bold;
+            position: relative;
+        }
+
+        .article-card p {
+            font-size: 1.15em; /* Nieco większa czcionka */
+            color: #555; /* Zmieniono kolor tekstu dla lepszej czytelności */
+            line-height: 1.6;
+        }
+
+        .article-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+        }
+
+        .article-card a::after {
+            content: '>>'; /* Dodanie wskaźnika na linki */
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2em;
+            color: #008f39;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .article-card a:hover::after {
+            transform: translateY(-50%) translateX(5px); /* Przesunięcie wskaźnika przy hover */
+        }
+
+        .article-card img {
+            width: 100%; /* Zdjęcie na całą szerokość karty */
+            border-bottom-left-radius: 15px; /* Dopasowanie zaokrągleń do karty */
+            border-bottom-right-radius: 15px;
+            margin-bottom: 20px; /* Przestrzeń między zdjęciem a treścią */
+        }
+
+        .article-card h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: #008f39; /* Podkreślenie tytułu */
+        }
+
+        footer {
+            background-color: #008f39;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #02a641, #008f39);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info div {
+            margin-bottom: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .contact-info div:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>VisiateAI</h1>
+    <nav>
+        <a href="Strona(html).html#about">O nas</a>
+        <a href="Strona(html).html#services">Usługi</a>
+        <a href="Strona(html).html#advantages">Co nas wyróżnia</a>
+        <a href="#contact">Kontakt</a>
+        <a href="gazetka.html">Gazetka</a>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="news" class="news-section">
+        <h2>Nowości w świecie robotyzacji</h2>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Wyszukaj artykuły...">
+            <input type="submit" id="searchButton" value="Szukaj">
+            <div id="suggestions" class="suggestions"></div>
+        </div>
+        <div id="article1" class="article-card">
+            <a href="article1.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Robotyka w przemyśle 2024: Najnowsze trendy</h3>
+                <p>Dowiedz się, jak robotyka rewolucjonizuje przemysł w 2024 roku. Nowe technologie, innowacje i prognozy.</p>
+            </a>
+        </div>
+        <div id="article2" class="article-card">
+            <a href="article2.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Sztuczna inteligencja w automatyzacji</h3>
+                <p>Jak AI wspiera rozwój automatyzacji i co przyniesie przyszłość. Analiza najnowszych narzędzi i rozwiązań.</p>
+            </a>
+        </div>
+        <div id="article3" class="article-card">
+            <a href="article3.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Przyszłość pracy z robotami</h3>
+                <p>Odkryj, jak roboty zmieniają rynek pracy i jakie kompetencje będą kluczowe w nadchodzących latach.</p>
+            </a>
+        </div>
+        <div id="article4" class="article-card">
+            <a href="article4.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Automatyzacja magazynów: Jak roboty zmieniają logistykę</h3>
+                <p>Roboty w magazynach: efektywność, oszczędność czasu i pieniędzy oraz wyzwania implementacyjne.</p>
+            </a>
+        </div>
+        <div id="article5" class="article-card">
+            <a href="article5.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>AI w zarządzaniu zapasami: Optymalizacja i prognozowanie</h3>
+                <p>Jak sztuczna inteligencja pomaga firmom handlowym w precyzyjnym zarządzaniu zapasami.</p>
+            </a>
+        </div>
+        <div id="article6" class="article-card">
+            <a href="article6.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Inteligentne systemy kontroli jakości</h3>
+                <p>W jaki sposób AI i robotyka poprawiają jakość produkcji poprzez zaawansowane systemy kontroli.</p>
+            </a>
+        </div>
+        <div id="article7" class="article-card">
+            <a href="article7.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Cyberbezpieczeństwo w erze robotyzacji</h3>
+                <p>Zabezpieczanie robotyzowanych procesów przed cyberzagrożeniami. Kluczowe strategie i technologie.</p>
+            </a>
+        </div>
+        <div id="article8" class="article-card">
+            <a href="article8.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Robotyka w produkcji: Od koncepcji do implementacji</h3>
+                <p>Etapy wdrażania robotyki w liniach produkcyjnych i wyzwania z tym związane.</p>
+            </a>
+        </div>
+        <div id="article9" class="article-card">
+            <a href="article9.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>AI i dostawy: Szybkość i precyzja dzięki nowym technologiom</h3>
+                <p>Wpływ sztucznej inteligencji na optymalizację dostaw i łańcuchów dostaw.</p>
+            </a>
+        </div>
+        <div id="article10" class="article-card">
+            <a href="article10.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Przemysł 4.0: Integracja IoT, AI i robotyki</h3>
+                <p>Jak przemysł 4.0 łączy różne technologie, tworząc nową erę produkcji.</p>
+            </a>
+        </div>
+        <div id="article11" class="article-card">
+            <a href="article11.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Programowanie robotów: Kluczowe języki i narzędzia</h3>
+                <p>Przegląd najważniejszych języków programowania i platform używanych w robotyce przemysłowej.</p>
+            </a>
+        </div>
+        <div id="article12" class="article-card">
+            <a href="article12.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Sztuczna inteligencja w prognozowaniu popytu</h3>
+                <p>Jak AI przewiduje trendy i pomaga firmom lepiej zarządzać produkcją i sprzedażą.</p>
+            </a>
+        </div>
+        <div id="article13" class="article-card">
+            <a href="article13.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Roboty kolaboracyjne: Przyszłość pracy ramię w ramię z maszynami</h3>
+                <p>Co to są coboty i jak zmieniają dynamikę pracy w przemyśle i handlu.</p>
+            </a>
+        </div>
+        <div id="article14" class="article-card">
+            <a href="article14.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Automatyzacja biurowa: Jak roboty i AI zmieniają administrację</h3>
+                <p>Nowe technologie w automatyzacji zadań biurowych – oszczędność czasu i zasobów.</p>
+            </a>
+        </div>
+        <div id="article15" class="article-card">
+            <a href="article15.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Cyfrowe bliźniaki: Nowe podejście do zarządzania produkcją</h3>
+                <p>Jak cyfrowe bliźniaki umożliwiają lepsze monitorowanie i optymalizację procesów produkcyjnych.</p>
+            </a>
+        </div>
+        <div id="article16" class="article-card">
+            <a href="article16.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Zarządzanie łańcuchem dostaw w dobie AI</h3>
+                <p>Jak sztuczna inteligencja i automatyzacja przekształcają zarządzanie łańcuchem dostaw w firmach.</p>
+            </a>
+        </div>
+        <div id="article17" class="article-card">
+            <a href="article17.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Robotyzacja w zielonej gospodarce: Efektywność i ekologia</h3>
+                <p>Jak roboty i AI wspierają zrównoważony rozwój w przemyśle i handlu.</p>
+            </a>
+        </div>
+        <div id="article18" class="article-card">
+            <a href="article18.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Automatyzacja produkcji: Redukcja kosztów i zwiększenie wydajności</h3>
+                <p>Analiza korzyści z automatyzacji procesów produkcyjnych w różnych branżach.</p>
+            </a>
+        </div>
+        <div id="article19" class="article-card">
+            <a href="article19.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>AI i kreatywność: Czy sztuczna inteligencja może tworzyć?</h3>
+                <p>Odkryj, jak AI jest wykorzystywana w procesach twórczych i co to oznacza dla przyszłości.</p>
+            </a>
+        </div>
+        <div id="article20" class="article-card">
+            <a href="article20.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Zrobotyzowane przemysły: Sektor motoryzacyjny jako lider</h3>
+                <p>Jak robotyzacja przemysłu motoryzacyjnego wyznacza nowe standardy w produkcji.</p>
+            </a>
+        </div>
+        <div id="article21" class="article-card">
+            <a href="article21.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Przyszłość AI w przemyśle: Wyzwania i możliwości</h3>
+                <p>Analiza przyszłości sztucznej inteligencji w kontekście przemysłowym, z uwzględnieniem możliwych kierunków rozwoju.</p>
+            </a>
+        </div>
+        <div id="article22" class="article-card">
+            <a href="article22.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Automatyzacja testowania: AI w zapewnianiu jakości</h3>
+                <p>W jaki sposób AI automatyzuje procesy testowania produktów i oprogramowania, zapewniając ich jakość.</p>
+            </a>
+        </div>
+        <div id="article23" class="article-card">
+            <a href="article23.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Robotyzacja w handlu: Automatyzacja procesów zakupowych</h3>
+                <p>Jak roboty i AI zmieniają sposób, w jaki firmy realizują zakupy i zarządzają łańcuchem dostaw.</p>
+            </a>
+        </div>
+        <div id="article24" class="article-card">
+            <a href="article24.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>Roboty w logistyce: Szybsze i bardziej efektywne dostawy</h3>
+                <p>W jaki sposób roboty i AI przyspieszają procesy logistyczne, od magazynowania po dostawy.</p>
+            </a>
+        </div>
+        <div id="article25" class="article-card">
+            <a href="article25.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>AI w zarządzaniu projektami: Nowa era efektywności</h3>
+                <p>Jak sztuczna inteligencja wspiera menedżerów projektów w planowaniu, realizacji i monitorowaniu zadań.</p>
+            </a>
+        </div>
+        <div id="article26" class="article-card">
+            <a href="article26.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>AI w Jakich branżach?</h3>
+                <p>Odkryj, w jakich sektorach sztuczna inteligencja odgrywa kluczową rolę. Przeanalizuj najnowsze trendy i technologie, które zmieniają oblicze różnych gałęzi przemysłu.</p>
+            </a>
+        </div>
+        <div id="article27" class="article-card">
+            <a href="article27.html" style="text-decoration: none; color: inherit; display: block;">
+                <h3>AI w handlu i produkcji</h3>
+                <p>Dowiedz się, jak AI rewolucjonizuje handel i produkcję. Zobacz, w jaki sposób automatyzacja i analiza danych przyczyniają się do wzrostu efektywności i innowacyjności.</p>
+            </a>
+        </div>        
+    </section>
+
+    <section id="contact" class="contact-info">
+        <div>
+            <h3>Email</h3>
+            <p>kontakt@visiateai.pl</p>
+        </div>
+        <div>
+            <h3>Telefon</h3>
+            <p>+48 660 046 239</p>
+        </div>
+        <div>
+            <h3>Facebook</h3>
+            <p><a href="https://facebook.com/visiateai"> Odwiedź nas na Facebooku</a></p>
+        </div>
+        <div>
+            <h3>Adres</h3>
+            <p>Poznań Dąbrowa ul. Szkolna 34 - 62-070 </p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 VisiateAI - Sprzedaż rozwiązań dla firm.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const articles = [
+            { id: 'article1', title: 'Robotyka w przemyśle 2024: Najnowsze trendy' },
+            { id: 'article2', title: 'Sztuczna inteligencja w automatyzacji' },
+            { id: 'article3', title: 'Przyszłość pracy z robotami' },
+            { id: 'article4', title: 'Automatyzacja magazynów: Jak roboty zmieniają logistykę' },
+            { id: 'article5', title: 'AI w zarządzaniu zapasami: Optymalizacja i prognozowanie' },
+            { id: 'article6', title: 'Inteligentne systemy kontroli jakości' },
+            { id: 'article7', title: 'Cyberbezpieczeństwo w erze robotyzacji' },
+            { id: 'article8', title: 'Robotyka w produkcji: Od koncepcji do implementacji' },
+            { id: 'article9', title: 'AI i dostawy: Szybkość i precyzja dzięki nowym technologiom' },
+            { id: 'article10', title: 'Przemysł 4.0: Integracja IoT, AI i robotyki' },
+            { id: 'article11', title: 'Programowanie robotów: Kluczowe języki i narzędzia' },
+            { id: 'article12', title: 'Sztuczna inteligencja w prognozowaniu popytu' },
+            { id: 'article13', title: 'Roboty kolaboracyjne: Przyszłość pracy ramię w ramię z maszynami' },
+            { id: 'article14', title: 'Automatyzacja biurowa: Jak roboty i AI zmieniają administrację' },
+            { id: 'article15', title: 'Cyfrowe bliźniaki: Nowe podejście do zarządzania produkcją' },
+            { id: 'article16', title: 'Zarządzanie łańcuchem dostaw w dobie AI' },
+            { id: 'article17', title: 'Robotyzacja w zielonej gospodarce: Efektywność i ekologia' },
+            { id: 'article18', title: 'Automatyzacja produkcji: Redukcja kosztów i zwiększenie wydajności' },
+            { id: 'article19', title: 'AI i kreatywność: Czy sztuczna inteligencja może tworzyć?' },
+            { id: 'article20', title: 'Zrobotyzowane przemysły: Sektor motoryzacyjny jako lider' },
+            { id: 'article21', title: 'Przyszłość AI w przemyśle: Wyzwania i możliwości' },
+            { id: 'article22', title: 'Automatyzacja testowania: AI w zapewnianiu jakości' },
+            { id: 'article23', title: 'Robotyzacja w handlu: Automatyzacja procesów zakupowych' },
+            { id: 'article24', title: 'Roboty w logistyce: Szybsze i bardziej efektywne dostawy' },
+            { id: 'article25', title: 'AI w zarządzaniu projektami: Nowa era efektywności' },
+            { id: 'article26', title: 'AI w Jakich branżach?' },
+            { id: 'article27', title: 'AI w handlu i produkcji' }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const suggestions = document.getElementById('suggestions');
+        const searchButton = document.getElementById('searchButton');
+
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+            suggestions.innerHTML = '';
+            if (query) {
+                const filteredArticles = articles.filter(article => article.title.toLowerCase().includes(query));
+                filteredArticles.forEach(article => {
+                    const suggestion = document.createElement('div');
+                    suggestion.textContent = article.title;
+                    suggestion.addEventListener('click', () => {
+                        document.getElementById(article.id).scrollIntoView({ behavior: 'smooth' });
+                        suggestions.innerHTML = '';
+                    });
+                    suggestions.appendChild(suggestion);
+                });
+            }
+        });
+
+        searchButton.addEventListener('click', function () {
+            const query = searchInput.value.toLowerCase();
+            const article = articles.find(article => article.title.toLowerCase().includes(query));
+            if (article) {
+                document.getElementById(article.id).scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert('Nie znaleziono artykułu.');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

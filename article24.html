@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiateAI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #049f42, #02a641);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            max-width: 1200px;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #03a340;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .article-content {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        .article-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #03a340;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+        }
+
+        .article-content blockquote {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-left: 5px solid #03a340;
+            font-style: italic;
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            background-color: #03a340;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #02a034;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #007a2f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.15);
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        footer p {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>VisiateAI</h1>
+        <nav>
+            <a href="Strona(html).html#about">O nas</a>
+            <a href="Strona(html).html#services">Usługi</a>
+            <a href="Strona(html).html#advantages">Co nas wyróżnia</a>
+            <a href="Strona(html).html#contact">Kontakt</a>
+            <a href="gazetka.html">Gazetka</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="article-content">
+                <h2>Roboty w logistyce: Szybsze i bardziej efektywne dostawy</h2>
+                <p>Robotyka odgrywa coraz większą rolę w logistyce, przekształcając sposób, w jaki towary są transportowane, sortowane i dostarczane do klientów. Dzięki robotom, procesy logistyczne stają się szybsze, bardziej efektywne i mniej kosztowne, co ma bezpośredni wpływ na zadowolenie klientów i konkurencyjność firm na globalnym rynku.</p>
+                <blockquote>
+                    "Roboty w logistyce to przyszłość dostaw: szybkość, precyzja i niezawodność, które pozwalają firmom sprostać rosnącym oczekiwaniom rynku."
+                </blockquote>
+                <p>Jednym z najważniejszych zastosowań robotyki w logistyce jest automatyzacja procesów magazynowych. Roboty magazynowe, takie jak autonomiczne wózki widłowe czy systemy przenośników, są w stanie szybko i dokładnie przemieszczać towary w magazynach. Dzięki precyzyjnemu sterowaniu, roboty te mogą działać bez przerw, optymalizując procesy kompletacji zamówień i minimalizując czas potrzebny na ich realizację.</p>
+                <p>Roboty są również wykorzystywane w sortowniach, gdzie ich zaawansowane systemy wizyjne i czujniki umożliwiają szybkie i dokładne sortowanie paczek na podstawie ich rozmiaru, wagi, a nawet miejsca przeznaczenia. Automatyzacja tego procesu pozwala na znaczne skrócenie czasu przetwarzania zamówień i zwiększa przepustowość centrów logistycznych.</p>
+                <p>W logistyce miejskiej, roboty zaczynają odgrywać kluczową rolę w dostawach ostatniej mili, czyli bezpośrednich dostawach do klientów końcowych. Autonomiczne roboty dostawcze mogą poruszać się po chodnikach lub drogach, dostarczając paczki bezpośrednio pod drzwi odbiorców. Tego typu rozwiązania są szczególnie przydatne w obszarach o dużym natężeniu ruchu, gdzie tradycyjne metody dostawy są mniej efektywne.</p>
+                <p>Roboty wspierają także zarządzanie flotą transportową. Systemy AI, które monitorują dane w czasie rzeczywistym, mogą optymalizować trasy dostaw, przewidując zatory drogowe i proponując alternatywne trasy, co redukuje czas dostawy i zużycie paliwa. Automatyzacja zarządzania flotą pozwala także na lepsze planowanie konserwacji pojazdów, co minimalizuje ryzyko awarii i przestojów.</p>
+                <p>Wprowadzenie robotyki do logistyki nie tylko przyspiesza procesy, ale także zwiększa ich niezawodność. Dzięki precyzyjnemu działaniu robotów, liczba błędów w dostawach zostaje zminimalizowana, co prowadzi do mniejszej liczby reklamacji i większej satysfakcji klientów. Ponadto, automatyzacja pozwala na lepsze zarządzanie zasobami, co obniża koszty operacyjne i umożliwia firmom oferowanie konkurencyjnych cen.</p>
+                <p>Chociaż robotyzacja w logistyce wiąże się z pewnymi wyzwaniami, takimi jak koszty początkowe wdrożenia technologii czy adaptacja infrastruktury, korzyści wynikające z jej zastosowania są niezaprzeczalne. Firmy, które inwestują w roboty, zyskują przewagę konkurencyjną, oferując szybsze, bardziej niezawodne i tańsze dostawy.</p>
+                <p>Podsumowując, roboty w logistyce to kluczowy element przyszłości tej branży. W miarę jak technologia będzie się rozwijać, możemy spodziewać się jeszcze większej integracji robotów w procesach logistycznych, co przyniesie korzyści zarówno firmom, jak i ich klientom, rewolucjonizując sposób, w jaki towary są dostarczane na całym świecie.</p>
+            </div>
+            
+            <a href="gazetka.html" class="back-button">Powrót</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 VisiateAI - Sprzedaż rozwiązań dla firm.</p>
+    </footer>
+
+</body>
+
+</html>

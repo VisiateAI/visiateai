@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiateAI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #049f42, #02a641);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            max-width: 1200px;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #03a340;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .article-content {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        .article-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #03a340;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+        }
+
+        .article-content blockquote {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-left: 5px solid #03a340;
+            font-style: italic;
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            background-color: #03a340;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #02a034;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #007a2f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.15);
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        footer p {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>VisiateAI</h1>
+        <nav>
+            <a href="Strona(html).html#about">O nas</a>
+            <a href="Strona(html).html#services">Usługi</a>
+            <a href="Strona(html).html#advantages">Co nas wyróżnia</a>
+            <a href="Strona(html).html#contact">Kontakt</a>
+            <a href="gazetka.html">Gazetka</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="article-content">
+                <h2>Zarządzanie łańcuchem dostaw w dobie AI</h2>
+                <p>W dobie sztucznej inteligencji (AI) zarządzanie łańcuchem dostaw przechodzi głęboką transformację, wprowadzając nowy poziom efektywności, precyzji i elastyczności. Dzięki AI, firmy mogą lepiej przewidywać popyt, optymalizować zapasy, zarządzać ryzykiem i reagować na zakłócenia w sposób, który wcześniej był nieosiągalny. W rezultacie, łańcuchy dostaw stają się bardziej odporne, zwinne i zdolne do sprostania rosnącym wymaganiom rynku.</p>
+                <blockquote>
+                    "Sztuczna inteligencja przekształca zarządzanie łańcuchem dostaw z reaktywnego na proaktywne, umożliwiając firmom lepsze planowanie i szybkie reagowanie na zmieniające się warunki."
+                </blockquote>
+                <p>Jednym z kluczowych obszarów, w którym AI wywiera znaczący wpływ, jest prognozowanie popytu. Algorytmy uczenia maszynowego analizują dane historyczne, trendy rynkowe oraz zewnętrzne czynniki ekonomiczne, co pozwala na tworzenie dokładniejszych prognoz popytu. Dzięki temu firmy mogą lepiej planować produkcję, unikać nadmiernych zapasów i minimalizować ryzyko niedoborów.</p>
+                <p>AI odgrywa również istotną rolę w optymalizacji zapasów. Systemy oparte na sztucznej inteligencji są w stanie analizować poziomy zapasów w czasie rzeczywistym, przewidując, kiedy i gdzie zapasy będą potrzebne. To pozwala na dynamiczne zarządzanie zasobami, co minimalizuje koszty magazynowania i ogranicza ryzyko przestojów produkcyjnych.</p>
+                <p>W zarządzaniu łańcuchem dostaw, AI wspiera także procesy logistyczne, optymalizując trasy dostaw i zarządzanie flotą. Dzięki analizie danych z GPS, warunków drogowych i prognoz pogody, AI może sugerować najbardziej efektywne trasy, co przyspiesza dostawy i redukuje koszty transportu.</p>
+                <p>Sztuczna inteligencja jest również kluczowa w zarządzaniu ryzykiem. AI może przewidywać potencjalne zakłócenia w łańcuchu dostaw, takie jak problemy z dostawcami, zmiany regulacji czy katastrofy naturalne. Dzięki temu firmy mogą proaktywnie podejmować działania zaradcze, minimalizując wpływ tych zakłóceń na ich działalność.</p>
+                <p>Zarządzanie łańcuchem dostaw w dobie AI to także kwestia zrównoważonego rozwoju. AI umożliwia lepsze monitorowanie i redukcję emisji CO2, optymalizację zużycia energii oraz bardziej efektywne zarządzanie zasobami, co wspiera ekologiczne praktyki biznesowe.</p>
+                <p>Przyszłość zarządzania łańcuchem dostaw jest nierozerwalnie związana z rozwojem sztucznej inteligencji. Firmy, które zainwestują w te technologie, będą mogły lepiej zarządzać swoimi zasobami, szybciej reagować na zmieniające się warunki rynkowe i zyskać przewagę konkurencyjną w dynamicznie zmieniającym się środowisku globalnym.</p>
+            </div>
+            
+            <a href="gazetka.html" class="back-button">Powrót</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 VisiateAI - Sprzedaż rozwiązań dla firm.</p>
+    </footer>
+
+</body>
+
+</html>

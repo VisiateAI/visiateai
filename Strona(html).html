@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiateAI - Sprzedaż rozwiązań dla firm</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, #049f42, #02a641);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.03em;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            max-width: 1200px;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out;
+            border-left: 5px solid #008f39;
+            text-align: center;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        .section h2 {
+            color: #008f39;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background: #008f39;
+            left: 50%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        .section p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            position: relative;
+            border-left: 5px solid #008f39;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #008f39;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+
+        .card p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .card button {
+            background-color: #008f39;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .card button:hover {
+            background-color: #006d2a;
+            transform: scale(1.05);
+        }
+
+        .highlight-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .highlight {
+            background-color: #008f39;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+        }
+
+        .highlight h3 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .highlight p {
+            font-size: 1.2em;
+            margin-top: auto;
+        }
+
+        .highlight img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .contact-info {
+            background: linear-gradient(135deg, #02a641, #008f39);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-info div {
+            margin-bottom: 10px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .contact-info div:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .contact-info p {
+            font-size: 1.1em;
+            margin: 0;
+            color: #ffffff;
+        }
+
+        .contact-info a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .contact-info a:hover {
+            color: #ffffff;
+        }
+
+        footer {
+            background-color: #008f39;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .highlight-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>VisiateAI</h1>
+    <nav>
+        <a href="#about">O nas</a>
+        <a href="#services">Usługi</a>
+        <a href="#advantages">Co nas wyróżnia</a>
+        <a href="#contact">Kontakt</a>
+        <a href="gazetka.html">Gazetka</a>
+    </nav>
+</header>
+
+<div class="container">
+    <section id="about" class="section">
+        <h2>O nas</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Założyciele</h3>
+                <p>Głównym założycielem jest Marcin Frąckowiak.</p>
+            </div>
+            <div class="card">
+                <h3>Misja</h3>
+                <p>Dążymy do tego, aby każdy biznes mógł korzystać z najnowszych osiągnięć AI.</p>
+            </div>
+            <div class="card">
+                <h3>Wizja</h3>
+                <p>Naszym celem jest stać się globalnym liderem w dziedzinie rozwiązań AI.</p>
+            </div>
+        </div>
+        <h2>Na czym polega fenomen VisiateAI</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Obrazowanie produkcji   </h3>
+                <p>Program po odbiorze zamówienia obrazuje realizacje zamówienia na rysunku, aby ułatwić prace.</p>
+            </div>
+            <div class="card">
+                <h3>AI</h3>
+                <p>Nasz program to nie zwykły algorytm, stosuje on AI aby wyciągać dane z tekstu oraz aby zarządzać nimi poprzez planowanie dalszych działań.</p>
+            </div>
+            <div class="card">
+                <h3>Realne dane</h3>
+                <p>Program pracuje na realnych danych które pochodzą z systemów ERP.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Nasze usługi</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3>Kontrola danych</h3>
+                <p>Pracodawca posiada widok na braki na magazynie oraz w ofercie, ponadto ma możliwość monitorowania trendów sprzedażowych i reakcji rynku. Dzięki temu można efektywniej zarządzać zasobami.</p>
+                <a href="analiza-danych.html?slide=5"><button>Dowiedz się więcej</button></a>
+            </div>
+            <div class="card">
+                <h3>Nasz produkt</h3>
+                <p>Wdrażamy nasz produkt handlowo-produkcyjny do wielu firm, który rozwiązuje specyficzne problemy biznesowe.</p>
+                <a href="analiza-danych.html"><button>Zobacz prezentację</button></a>
+            </div>
+            <div class="card">
+                <h3>Jednolite zasady dla handlowców</h3>
+                <p>Każdy handlowiec będzie miał nałożone jednolite zasady oraz ceny, które jednak będzie mógł regulować rabatami.</p>
+                <a href="analiza-danych.html?slide=4"><button>Dowiedz się więcej</button></a>
+            </div>
+            <div class="card">
+                <h3>Połączenie z ERP</h3>
+                <p>Oprogramowanie po każdym zamówieniu tworzy plik, który zawiera dane oferty i przekazuje je do ERP, ponadto pobiera stan cen i magazynu.</p>
+                <a href="analiza-danych.html?slide=9"><button>Dowiedz się więcej</button></a>
+            </div>
+            <div class="card">
+                <h3>Ofertacja</h3>
+                <p>Popraw wydajność swoich handlowców za pomocą automatycznego ofertowania.</p>
+                <a href="analiza-danych.html?slide=8"><button>Dowiedz się więcej</button></a>
+            </div>
+            <div class="card">
+                <h3>Zlecenie produkcyjne</h3>
+                <p>Oprogramowanie na podstawie zamówienia klienta zaplanuje produkcję, obliczy straty oraz przekaże instrukcje pracownikom magazynu.</p>
+                <a href="analiza-danych.html?slide=7"><button>Dowiedz się więcej</button></a>
+            </div>
+        </div>
+    </section>
+
+    <section id="advantages" class="section">
+        <h2>Co nas wyróżnia</h2>
+        <div class="highlight-container">
+            <div class="highlight">
+                <h3><alt="Cena">Cena</h3>
+                <p>Oferujemy konkurencyjne ceny, które dostosowujemy do potrzeb Twojej firmy.</p>
+            </div>
+            <div class="highlight">
+                <h3><alt="Jakość">Jakość</h3>
+                <p>Nasze rozwiązania są oparte na najnowszych technologiach i zapewniają najwyższą jakość usług.</p>
+            </div>
+            <div class="highlight">
+                <h3><alt="Konkurencyjność">Konkurencyjność</h3>
+                <p>Dzięki naszym innowacyjnym podejściom, Twoja firma zawsze będzie o krok przed konkurencją.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-info">
+        <div>
+            <h3>Email</h3>
+            <p>kontakt@visiateai.pl</p>
+        </div>
+        <div>
+            <h3>Telefon</h3>
+            <p>+48 660 046 239</p>
+        </div>
+        <div>
+            <h3>Facebook</h3>
+            <p><a href="https://facebook.com/visiateai"> Odwiedź nas na Facebooku</a></p>
+        </div>
+        <div>
+            <h3>Adres</h3>
+            <p>Poznań Dąbrowa ul. Szkolna 34 - 62-070 </p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 VisiateAI - Sprzedaż rozwiązań dla firm.</p>
+</footer>
+
+</body>
+</html>

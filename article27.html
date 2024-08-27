@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisiateAI</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.8;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #049f42, #02a641);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            letter-spacing: 2px;
+            font-weight: 700;
+        }
+
+        nav {
+            margin-top: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease-in-out;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: white;
+            left: 50%;
+            bottom: -5px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 30px auto;
+            max-width: 1200px;
+            flex-grow: 1;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background-color: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #03a340;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .section:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .article-content {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: #444;
+            text-align: justify;
+            margin-bottom: 40px;
+        }
+
+        .article-content h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #03a340;
+        }
+
+        .article-content p {
+            margin-bottom: 20px;
+        }
+
+        .article-content blockquote {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border-left: 5px solid #03a340;
+            font-style: italic;
+            color: #555;
+        }
+
+        .back-button {
+            display: inline-block;
+            padding: 12px 24px;
+            margin-top: 20px;
+            background-color: #03a340;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-family: 'Montserrat', sans-serif;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #02a034;
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #007a2f;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: auto;
+            box-shadow: 0 -2px 15px rgba(0, 0, 0, 0.15);
+            font-size: 0.9em;
+            letter-spacing: 0.5px;
+        }
+
+        footer p {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .back-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .section {
+                padding: 15px;
+            }
+
+            .back-button {
+                padding: 8px 16px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>VisiateAI</h1>
+        <nav>
+            <a href="Strona(html).html#about">O nas</a>
+            <a href="Strona(html).html#services">Usługi</a>
+            <a href="Strona(html).html#advantages">Co nas wyróżnia</a>
+            <a href="Strona(html).html#contact">Kontakt</a>
+            <a href="gazetka.html">Gazetka</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="section">
+            <div class="article-content">
+                <h2>AI w handlu i produkcji</h2>
+                <p>Sztuczna inteligencja (AI) odgrywa coraz większą rolę w handlu i produkcji, przekształcając te branże poprzez automatyzację, optymalizację procesów i dostarczanie spersonalizowanych doświadczeń klientom. AI wspiera firmy w zwiększaniu efektywności operacyjnej, poprawie jakości produktów i usług oraz lepszym zrozumieniu potrzeb klientów, co prowadzi do większej konkurencyjności na globalnym rynku.</p>
+                <blockquote>
+                    "AI w handlu i produkcji to klucz do osiągnięcia nowych poziomów efektywności i innowacyjności, które zmieniają zasady gry w tych sektorach."
+                </blockquote>
+                <p>W handlu AI jest szeroko wykorzystywana do personalizacji doświadczeń zakupowych. Algorytmy AI analizują dane dotyczące zachowań klientów, takie jak wcześniejsze zakupy, przeglądane produkty czy preferencje, i na tej podstawie generują rekomendacje produktów, które mogą ich zainteresować. Dzięki temu klienci otrzymują bardziej spersonalizowane oferty, co zwiększa ich satysfakcję i lojalność.</p>
+                <p>AI wspiera także zarządzanie zapasami w handlu. Zaawansowane systemy analityczne oparte na AI mogą przewidywać popyt na poszczególne produkty, optymalizując poziomy zapasów i minimalizując ryzyko nadmiernych stanów magazynowych lub braków towaru. To z kolei przekłada się na bardziej efektywne operacje handlowe i zmniejszenie kosztów.</p>
+                <p>W produkcji AI jest wykorzystywana do optymalizacji procesów produkcyjnych, automatyzacji zadań i poprawy jakości produktów. Systemy AI mogą analizować dane z maszyn produkcyjnych w czasie rzeczywistym, identyfikując potencjalne problemy i zapobiegając awariom, co minimalizuje przestoje i zwiększa wydajność produkcji.</p>
+                <p>Jednym z kluczowych zastosowań AI w produkcji jest predictive maintenance, czyli przewidywanie awarii maszyn na podstawie analizy danych historycznych i bieżących. Dzięki temu możliwe jest planowanie konserwacji w sposób, który minimalizuje przestoje i koszty związane z naprawami.</p>
+                <p>AI wspiera także automatyzację kontroli jakości w produkcji. Systemy wizyjne oparte na AI mogą analizować produkty na linii produkcyjnej z niezwykłą precyzją, wykrywając nawet najmniejsze defekty i odchylenia od normy. To pozwala na szybką reakcję i zapewnienie najwyższej jakości końcowych produktów.</p>
+                <p>W handlu, AI jest również kluczowym narzędziem w zarządzaniu cenami i promocjami. Algorytmy AI mogą analizować dane rynkowe, konkurencyjne i sezonowe, aby dynamicznie dostosowywać ceny produktów w czasie rzeczywistym, maksymalizując zyski i poprawiając sprzedaż. Dzięki AI firmy mogą lepiej reagować na zmieniające się warunki rynkowe i optymalizować swoje strategie cenowe.</p>
+                <p>Podsumowując, AI w handlu i produkcji przynosi liczne korzyści, od zwiększenia efektywności operacyjnej po poprawę jakości produktów i usług. Firmy, które wdrażają AI w tych sektorach, zyskują znaczącą przewagę konkurencyjną, mogąc lepiej dostosować się do potrzeb klientów, optymalizować swoje procesy i wprowadzać innowacyjne rozwiązania, które napędzają ich rozwój na dynamicznie zmieniającym się rynku.</p>
+            </div>
+            
+            <a href="gazetka.html" class="back-button">Powrót</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 VisiateAI - Sprzedaż rozwiązań dla firm.</p>
+    </footer>
+
+</body>
+
+</html>
